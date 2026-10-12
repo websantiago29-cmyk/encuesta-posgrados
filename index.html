@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Instrumento de investigaci&oacute;n sobre las encuestas de cursos de posgrado de Uniandes.">
+  <title>Tu experiencia &middot; Encuestas de cursos</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./styles.css?v=5.0">
+  <script src="./app.js?v=5.0" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Ir al contenido</a>
+  <div class="app-shell">
+    <header class="site-header">
+      <img src="./assets/logo-uniandes.png" alt="Universidad de los Andes" class="brand" width="165" height="68">
+      <div class="header-label"><span>ENCUESTAS DE CURSOS</span><strong>Investigaci&oacute;n &middot; Posgrados</strong></div>
+    </header>
+    <div id="mode-banner" class="mode-banner" role="status" hidden></div>
+    <main id="main" tabindex="-1">
+      <section id="welcome" class="screen welcome-screen" aria-labelledby="welcome-title">
+        <div class="screen-scroll" id="welcome-scroll">
+          <div class="welcome-layout">
+            <div class="welcome-heading">
+              <p class="eyebrow">Tu experiencia, en tus palabras</p>
+              <h1 id="welcome-title">Hablemos de las<br><span class="highlight">encuestas de cursos.</span></h1>
+              <p class="welcome-lead">Tu experiencia y tus opiniones sobre las encuestas de cursos nos interesan.</p>
+              <div class="welcome-meta"><span>8&ndash;10 min aprox.</span><span></span></div>
+            </div>
+            <div class="welcome-info">
+              <p>Queremos conocer tu experiencia con las encuestas de cursos. <strong>Este cuestionario no reemplaza la evaluaci&oacute;n de ning&uacute;n curso.</strong></p>
+              <p class="small">Esta encuesta es anónima. Tus respuestas se utilizarán con fines de investigación y se analizarán de manera conjunta.</p>
+              <details id="privacy-details">
+                <summary>Informaci&oacute;n antes de participar</summary>
+                <div class="details-content">
+                  <p>Tu participaci&oacute;n es voluntaria. Puedes salir del cuestionario en cualquier momento.</p>
+                  <p id="storage-disclosure"></p>
+                  <p id="contact-line">Contacto responsable: Santiago Mera - correo: s.mera1@uniandes.edu.co </p>
+                  <p>Evita incluir nombres, c&oacute;digos estudiantiles u otros datos personales en las respuestas abiertas.</p>
+                </div>
+              </details>
+              <label class="consent-label"><input type="checkbox" id="consent"><span>Le&iacute; la informaci&oacute;n y acepto participar voluntariamente.</span></label>
+              <p class="error-text" id="consent-error" role="alert" hidden></p>
+            </div>
+          </div>
+        </div>
+        <nav class="screen-nav welcome-nav" aria-label="Comenzar"><span class="nav-note"></span><button id="start-button" class="button primary" type="button">Comenzar <span aria-hidden="true">&rarr;</span></button></nav>
+      </section>
+      <section id="survey" class="screen survey-screen" aria-labelledby="question-title" hidden>
+        <div class="progress-area">
+          <div class="progress-meta"><span id="step-name">Tu experiencia</span><span id="progress-number">1 de 12</span></div>
+          <div class="progress-track" id="progressbar" role="progressbar" aria-label="Avance en tu recorrido" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="progress-fill"></div></div>
+        </div>
+        <div class="screen-scroll question-scroll" id="question-scroll">
+          <div id="question-layout" class="question-layout">
+            <div class="question-heading">
+              <p id="question-definition" class="definition" hidden></p>
+              <h2 id="question-title" tabindex="-1"></h2>
+              <p id="question-help" class="question-help"></p>
+              <div class="desktop-section-mark" aria-hidden="true"><span id="section-number">01</span><span id="section-description">Tu experiencia</span></div>
+            </div>
+            <div class="response-area">
+              <div id="answers" class="answers" role="group" aria-labelledby="question-title" aria-describedby="question-help validation"></div>
+              <div id="other-area" class="other-area" hidden>
+                <label id="other-label" for="other-input">&iquest;Cu&aacute;l? Escr&iacute;belo aqu&iacute;.</label>
+                <input id="other-input" type="text" maxlength="160" autocomplete="off" autocapitalize="sentences" aria-describedby="other-counter">
+                <p class="counter" id="other-counter">0 / 160</p>
+              </div>
+              <p id="validation" class="error-text" role="alert" hidden></p>
+            </div>
+          </div>
+        </div>
+        <nav class="screen-nav" aria-label="Navegar entre preguntas"><button id="back-button" class="button back" type="button"><span aria-hidden="true">&larr;</span> Volver</button><p id="selection-note" class="nav-note" aria-live="polite"></p><button id="next-button" class="button primary" type="button">Continuar <span aria-hidden="true">&rarr;</span></button></nav>
+      </section>
+      <section id="explain" class="screen explain-screen" hidden aria-labelledby="explain-title">
+        <div class="screen-scroll explain-scroll">
+          <div class="explain-layout">
+            <p class="eyebrow">Antes de continuar</p>
+            <h2 id="explain-title" tabindex="-1">&iquest;A qu&eacute; llamamos encuesta de cursos?</h2>
+            <p class="explain-primary">En este estudio, llamamos <strong>encuesta de cursos</strong> al cuestionario institucional mediante el cual la Universidad solicita a los estudiantes su opini&oacute;n sobre los cursos.</p>
+            <p class="explain-secondary">Es posible que lo conozcas con otro nombre.</p>
+            <p class="explain-hint">En la siguiente pantalla te preguntaremos por tu experiencia con esas encuestas.</p>
+          </div>
+        </div>
+        <nav class="screen-nav explain-nav" aria-label="Continuar despu&eacute;s de la explicaci&oacute;n">
+          <button id="explain-back" class="button back" type="button">&larr; Volver</button>
+          <button id="explain-next" class="button primary" type="button">Entendido, continuar &rarr;</button>
+        </nav>
+      </section>
+      <section id="sending" class="screen status-screen" aria-live="polite" hidden>
+        <div class="status-content"><div class="spinner" aria-hidden="true"></div><h2>Enviando tu respuesta</h2><p>Espera la confirmaci&oacute;n antes de cerrar esta pesta&ntilde;a.</p></div>
+      </section>
+      <section id="finish" class="screen status-screen" hidden aria-labelledby="finish-title">
+        <div class="status-content"><div class="finish-mark" aria-hidden="true">&#10003;</div><p class="eyebrow">Recorrido completado</p><h2 id="finish-title">Gracias por participar</h2><p id="finish-text"></p><button id="restart-button" class="button back" type="button">Volver al inicio</button></div>
+      </section>
+      <section id="send-error" class="screen status-screen" hidden aria-labelledby="error-title">
+        <div class="status-content"><p class="eyebrow">Env&iacute;o sin confirmar</p><h2 id="error-title">A&uacute;n no podemos confirmar el guardado</h2><p>Tu respuesta sigue en esta pesta&ntilde;a. Puedes reintentar sin generar una segunda fila si el primer env&iacute;o ya se guard&oacute;.</p><button id="retry-button" class="button primary" type="button">Reintentar env&iacute;o</button></div>
+      </section>
+      <noscript><p class="no-script">Activa JavaScript para abrir el instrumento. Comprueba que <strong>app.js</strong> est&eacute; junto a <strong>index.html</strong>.</p></noscript>
+    </main>
+  </div>
+</body>
+</html>

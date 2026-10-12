@@ -1,0 +1,23 @@
+ENCUESTA DE CURSOS - POSGRADOS UNIANDES (V5.1)
+
+Archivos publicos para GitHub Pages:
+  index.html   (parte del archivo index(1).html proporcionado por el usuario)
+  app.js       (ramificaciones corregidas)
+  styles.css   (centrado y barra inferior de la ultima revision)
+  assets/logo-uniandes.png
+
+Cambios de logica:
+  A (respondio): PC1, PC2, PC3, PC4, PC5 y PA1.
+  B (no termino) y C (no respondio): PC1, PC2, PC4 y PA1.
+  D y E (contacto incierto o desconocimiento): PN1, PN2, PN4 y PA2.
+  PC5 agrega la opcion Otra respuesta, que exige texto de hasta 160 caracteres.
+
+Para Google Sheets:
+  El archivo Google_Apps_Script_Posgrados_v5_1.gs va SOLO en Google Apps Script,
+  NO dentro del repositorio publico de GitHub.
+  Si habilitas la recoleccion, actualiza tambien Apps Script y haz un despliegue
+  nuevo del web app; guarda el ID de tu hoja y el origen de GitHub en Apps Script.
+  Usa la hoja Respuestas_v5_1: esquema distinto a las versiones previas.
+  El envio permanece DESACTIVADO por defecto en app.js.
+  Antes de recopilar datos reales, valida el consentimiento, responsable y
+  tratamiento institucional de datos.

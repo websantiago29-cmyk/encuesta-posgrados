@@ -9,7 +9,7 @@ const CONFIG = Object.freeze({
   contactoInvestigacion: '',
   urlAvisoDatos: '',
   urlAppsScript: '',
-  version: 'v5-rutas-2026-10'
+  version: 'v5.1-rutas-2026-10'
 });
 const PREGUNTAS = {
   "P1": {
@@ -1144,11 +1144,18 @@ const PREGUNTAS = {
       {
         "id": "no_se",
         "label": "No sé"
+      },
+      {
+        "id": "otro",
+        "label": "Otra respuesta (¿cuál?)",
+        "custom": true
       }
     ],
     "help": "",
     "type": "single",
-    "ui": "cards"
+    "ui": "cards",
+    "otherPrompt": "¿Cuál? Escríbela brevemente.",
+    "otherMax": 160
   },
   "PA1": {
     "id": "PA1",
@@ -1162,7 +1169,7 @@ const PREGUNTAS = {
   },
   "PN1": {
     "id": "PN1",
-    "title": "Antes de decidir responder una encuesta de cursos, ¿qué información te interesaría conocer?",
+    "title": "Antes de decidir si responder una encuesta de cursos, ¿qué información, te interesaría conocer?",
     "options": [
       {
         "id": "proposito",
@@ -1249,39 +1256,6 @@ const PREGUNTAS = {
     "otherPrompt": "¿Cuál? Escríbelo aquí.",
     "otherMax": 160
   },
-  "PN3": {
-    "id": "PN3",
-    "title": "Si decidieras responder una encuesta de cursos, ¿qué importancia tendría para ti saber quién puede ver tus respuestas?",
-    "options": [
-      {
-        "id": "ninguna",
-        "label": "Ninguna importancia"
-      },
-      {
-        "id": "poca",
-        "label": "Poca importancia"
-      },
-      {
-        "id": "intermedia",
-        "label": "Importancia moderada"
-      },
-      {
-        "id": "mucha",
-        "label": "Bastante importancia"
-      },
-      {
-        "id": "total",
-        "label": "Mucha importancia"
-      },
-      {
-        "id": "no_se",
-        "label": "No lo había pensado"
-      }
-    ],
-    "help": "Toca un número del 1 al 5, o indica si no lo habías pensado.",
-    "type": "single",
-    "ui": "scale"
-  },
   "PN4": {
     "id": "PN4",
     "title": "¿En qué momento de un curso te parecería oportuno que se pidiera la opinión de los estudiantes?",
@@ -1330,8 +1304,9 @@ const PREGUNTAS = {
   }
 };
 const RUTAS = {"A": ["A1", "A2", "A3", "A4"], "B": ["B1", "B2", "B3", "B4"], "C": ["C1", "C2", "C3", "C4"], "D": ["D1", "D2", "D3", "D4"], "E": ["E1", "E2", "E3", "E4"]};
-const COMUNES = ['PC1','PC2','PC3','PC4','PC5','PA1'];
-const SIN_EXPERIENCIA = ['PN1','PN2','PN3','PN4','PA2'];
+const COMUNES = ['PC1','PC2','PC3','PC4','PC5','PA1']; // Ruta A
+const COMUNES_SIN_RESPUESTA = ['PC1','PC2','PC4','PA1']; // Rutas B y C
+const SIN_EXPERIENCIA = ['PN1','PN2','PN4','PA2']; // Rutas D y E
 
 const $ = (selector) => document.querySelector(selector);
 let respuestas = Object.create(null);
@@ -1358,7 +1333,8 @@ function pasos() {
   if (route && ['ninguna','indefinida'].includes(respuestas[route+'3'])) {
     specific = specific.filter(id => id !== route+'4');
   }
-  return ['P1','INFO','P2',...specific,...(route==='D'||route==='E'?SIN_EXPERIENCIA:COMUNES)];
+  const tail = route === 'A' ? COMUNES : (route === 'B' || route === 'C') ? COMUNES_SIN_RESPUESTA : SIN_EXPERIENCIA;
+  return ['P1','INFO','P2',...specific,...tail];
 }
 function show(id) {
   for (const name of screens) $('#'+name).hidden = name !== id;
